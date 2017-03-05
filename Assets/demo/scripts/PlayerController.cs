@@ -2,14 +2,21 @@
 using System.Collections;
 using Prime31;
 
-
-public class DemoScene : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    // movement config
+    /// <summary>
+    /// 重力
+    /// </summary>
     public float gravity = -25f;
     public float runSpeed = 8f;
-    public float groundDamping = 20f; // how fast do we change direction? higher means faster
+    /// <summary>
+    /// how fast do we change direction? higher means faster
+    /// </summary>
+    public float groundDamping = 20f;
     public float inAirDamping = 5f;
+    /// <summary>
+    /// 跳的高度
+    /// </summary>
     public float jumpHeight = 3f;
 
     [HideInInspector]
@@ -18,6 +25,9 @@ public class DemoScene : MonoBehaviour
     private CharacterController2D _controller;
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
+    /// <summary>
+    /// 速度
+    /// </summary>
     private Vector3 _velocity;
 
     void Awake()
@@ -31,11 +41,12 @@ public class DemoScene : MonoBehaviour
         _controller.onTriggerExitEvent += onTriggerExitEvent;
     }
 
-
     #region Event Listeners
 
     void onControllerCollider(RaycastHit2D hit)
     {
+        //Debug.Log("xxx");
+
         // bail out on plain old ground hits cause they arent very interesting
         if (hit.normal.y == 1f)
         {
