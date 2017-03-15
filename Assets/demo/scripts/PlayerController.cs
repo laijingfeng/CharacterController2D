@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Prime31;
-using Jerry;
 
 public class PlayerController : MonoBehaviour
 {
@@ -119,8 +118,6 @@ public class PlayerController : MonoBehaviour
         {
             _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
             _animator.Play(Animator.StringToHash("Jump"));
-
-            JerryEventMgr.DispatchEvent(Enum_Event.PlayAudio.ToString(), new object[] { Enum_Audio.Jump });
         }
 
         // apply horizontal speed smoothing it. dont really do this with Lerp. Use SmoothDamp or something that provides more control
